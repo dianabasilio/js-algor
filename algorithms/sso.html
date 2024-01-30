@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azure AD Authentication</title>
+    <script src="https://alcdn.msauth.net/browser/2.17.0/js/msal-browser.min.js"></script>
+  </head>
+  <body>
+    <h1>Azure AD Authentication Example</h1>
+    <button onclick="signIn()">Sign In</button>
+    <button onclick="signOut()">Sign Out</button>
+
+    <script>
+      const msalConfig = {
+        auth: {
+          clientId: "YOUR_CLIENT_ID",
+          authority: "https://login.microsoftonline.com/YOUR_TENANT_ID",
+          redirectUri: "http://localhost:3000", // Update with your redirect URI
+        },
+        cache: {
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: false,
+        },
+      };
+
+      const msalInstance = new Msal.UserAgentApplication(msalConfig);
+
+      function signIn() {
+        msalInstance
+          .loginPopup()
+          .then((response) => {
+            console.log("Login success:", response);
+            getUserProfile();
+          })
+          .catch((error) => console.error("Login error:", error));
+      }
+
+      function signOut() {
+        msalInstance.logout();
+      }
+
+      function getUserProfile() {
+        const user = msalInstance.getAccount();
+        if (user) {
+          console.log("User profile:", user);
+          console.log("User email:", user.idTokenClaims.email);
+        } else {
+          console.error("User not authenticated");
+        }
+      }
+    </script>
+  </body>
+</html>

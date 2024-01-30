@@ -1,0 +1,62 @@
+{
+  "Cuc": {
+    "sf_cuc_id": "",
+    "cs_cuc_id": "46866",
+    "mc_cuc_id": null,
+    "Error_Msg": "",
+    "Error_Grl": "",
+    "accounts": [
+      {
+        "sf_account_id": "",
+        "cs_account_id": "822669",
+        "mc_account_id": null,
+        "Error_Msg": ""
+      }
+    ],
+    "contacts": [
+      {
+        "sf_contact_id": "",
+        "cs_contact_id": "-1",
+        "Error_Msg": "",
+        "status": "1"
+      }
+    ],
+    "consignees": [
+      {
+        "sf_consignee_id": "",
+        "cs_consignee_id": "36051571",
+        "mc_consignee_id": null,
+        "Error_Msg": "",
+        "status": "1"
+      }
+    ],
+    "accntcntctrelations": [],
+    "consigncntctrelations": [],
+    "docprofiles": [
+      {
+        "docprofile": {
+          "sf_cuc_id": "",
+          "sf_account_id": null,
+          "cuc_account": "CUC",
+          "status": "1",
+          "Error_Msg": ""
+        },
+        "Error_Msg": ""
+      },
+      {
+        "docprofile": {
+          "sf_cuc_id": "",
+          "sf_account_id": null,
+          "cuc_account": "CUC",
+          "status": "1",
+          "Error_Msg": ""
+        },
+        "Error_Msg": ""
+      }
+    ],
+    "DocCuc": []
+  },
+  "fiscalDocResponse": {
+    "cucdocument": { "sf_file_id": "", "cs_file_id": "112639", "Error_Msg": "" }
+  }
+}

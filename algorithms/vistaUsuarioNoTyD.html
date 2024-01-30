@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azure AD Authentication Example</title>
+    <!-- Importa MSAL desde el CDN -->
+    <script src="https://alcdn.msauth.net/browser/2.17.0/js/msal-browser.min.js"></script>
+  </head>
+  <body>
+    <h1>Azure AD Authentication Example</h1>
+    <button onclick="signIn()">Sign In</button>
+    <button onclick="signOut()">Sign Out</button>
+
+    <script>
+      // Configuración de MSAL
+      const msalConfig = {
+        auth: {
+          clientId: "YOUR_CLIENT_ID",
+          clientSecret: "",
+          authority: "https://login.microsoftonline.com/YOUR_TENANT_ID",
+          redirectUri: "http://localhost:3000", // Actualiza con tu URI de redirección
+        },
+        cache: {
+          cacheLocation: "localStorage",
+          storeAuthStateInCookie: false,
+        },
+      };
+
+      // Crear una instancia de la aplicación MSAL
+      const msalInstance = new msal.PublicClientApplication(msalConfig);
+
+      // Función para iniciar sesión
+      function signIn() {
+        msalInstance
+          .loginPopup()
+          .then((response) => {
+            console.log("Login success:", response);
+            getUserProfile();
+          })
+          .catch((error) => console.error("Login error:", error));
+      }
+
+      // Función para cerrar sesión
+      function signOut() {
+        msalInstance.logout();
+      }
+
+      // Función para obtener el perfil del usuario
+      function getUserProfile() {
+        const user = msalInstance.getAccount();
+        if (user) {
+          console.log("User profile:", user);
+          console.log("User email:", user.idTokenClaims.email);
+        } else {
+          console.error("User not authenticated");
+        }
+      }
+    </script>
+  </body>
+</html>
