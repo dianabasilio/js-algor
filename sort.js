@@ -11,6 +11,8 @@ console.log("sort");
 array1.sort((a, b) => {
   console.log("a", a);
   console.log("b", b);
+  //para mayor a menor sería b-a
+  //para ordenar por largo de string sería a.length-b.length
   return a - b;
 });
 console.log(array1);
