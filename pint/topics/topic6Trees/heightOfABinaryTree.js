@@ -18,18 +18,17 @@ function height(root) {
   while (queue.length > 0) {
     let levelSize = queue.length;
     console.log("levelSize", levelSize);
+    //Este for se asegura de que termine un nivel para sumarle al height
     for (let i = 0; i < levelSize; i++) {
       console.log("queue", queue);
       let currentNode = queue.shift();
       console.log("currentNode", currentNode);
       // Añadir el hijo izquierdo si existe
       if (currentNode.left !== null) {
-        console.log("currentNode.left", currentNode.left);
         queue.push(currentNode.left);
       }
       // Añadir el hijo derecho si existe
       if (currentNode.right !== null) {
-        console.log("currentNode.right", currentNode.right);
         queue.push(currentNode.right);
       }
     }

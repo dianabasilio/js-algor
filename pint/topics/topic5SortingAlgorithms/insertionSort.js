@@ -1,5 +1,5 @@
 function insertionSort2(n, arr) {
-  // Empezamos desde el segundo elemento ya que asumimos que el primer elemento ya está ordenado
+  // Empezamos desde el segundo elemento ya que se compara primero el segundo con el anterior
   for (let i = 1; i < n; i++) {
     let currentValue = arr[i];
     let j = i - 1;
@@ -29,3 +29,20 @@ function insertionSort2(n, arr) {
 let n = 6;
 let arr = [1, 4, 3, 5, 6, 2];
 insertionSort2(n, arr);
+
+function insertionSort(n, arr) {
+  // Empezamos desde el segundo elemento ya que se compara primero el segundo con el anterior
+  // n= arr.lenght
+  //[1,3,2]
+  for (let i = 1; i < n; i++) {}
+  let currentValue = arr[i];
+
+  let j = i - 1;
+
+  while (j >= 0 && arr[j] > arr[currentValue]) {
+    arr[j + 1] = arr[j];
+    j--;
+  }
+
+  arr[j + 1] = arr[currentValue];
+}

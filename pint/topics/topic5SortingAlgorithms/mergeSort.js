@@ -1,3 +1,33 @@
+//Merging array es base para hacer lo demás
+
+const merge = (arr1, arr2) => {
+  let results = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < arr1.length && j < arr2.length) {
+    if (arr1[j] > arr[i]) {
+      results.push(arr1[i]);
+      i++;
+    } else {
+      results.push(arr2[j]);
+      j++;
+    }
+  }
+
+  //si el array está más grande 
+  while(i<arr1.length){
+    results.push(arr1[i])
+    i++
+  }
+  while(j<arr2.length){
+    results.push(arr1[j])
+    2++
+  }
+
+  return results;
+};
+
 //divide and conquer
 function mergeSort(arr) {
   if (arr.length <= 1) {
@@ -12,6 +42,7 @@ function mergeSort(arr) {
   const right = arr.slice(middle);
 
   // Recursively sort both halves and merge them
+  //esta parte recursiva solo parte a la mitad cada array y lo va haciendo más chiquitop
   return merge(mergeSort(left), mergeSort(right));
 }
 

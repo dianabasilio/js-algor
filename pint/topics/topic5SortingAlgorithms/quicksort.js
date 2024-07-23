@@ -26,6 +26,8 @@ function processData(input) {
     right = quickSort(right);
 
     // Combinamos los subarrays ordenados y el pivote
+    //Cuando usas ...left dentro de un array, estás expandiendo
+    //los elementos de left y colocándolos individualmente dentro del nuevo array.
     const sorted = [...left, pivot, ...right];
 
     console.log("...left", ...left);

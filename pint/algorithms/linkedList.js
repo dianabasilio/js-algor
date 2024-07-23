@@ -48,7 +48,6 @@ class LinkedList {
     let count = 0;
     //s una referencia al nodo anterior al nodo current. Inicia en null porque no hay un nodo anterior al nodo cabeza al inicio.
     let previous = null;
-
     while (current !== null && count < position) {
       previous = current; //Node before index
       current = current.next; //Node after index
@@ -59,7 +58,7 @@ class LinkedList {
     newNode.next = current;
   }
 
-  // Method to delete a node at a specific position
+  // Método para eliminar un nodo en una posición específica
   deleteAtPosition(position) {
     if (!this.head) return;
 
@@ -69,25 +68,57 @@ class LinkedList {
     }
 
     let current = this.head;
-    let count = 0;
     let previous = null;
+    let count = 0;
 
-    while (current !== null && count < position) {
+    while (current && count < position) {
       previous = current;
-      0;
       current = current.next;
-      1;
       count++;
-      1;
     }
-    console.log("previous", previous);
-    console.log("previous.next", previous.next);
-    console.log("current", current);
-    console.log("current.next", current.next);
 
-    if (current !== null) {
+    if (current) {
       previous.next = current.next;
     }
+  }
+
+  // Método para eliminar un nodo por valor
+  deleteByValue(value) {
+    if (!this.head) return;
+
+    if (this.head.data === value) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let current = this.head;
+    while (current.next && current.next.data !== value) {
+      current = current.next;
+    }
+
+    if (current.next) {
+      current.next = current.next.next;
+    }
+  }
+
+  // Método para buscar un nodo por valor
+  find(value) {
+    let current = this.head;
+    while (current && current.data !== value) {
+      current = current.next;
+    }
+    return current;
+  }
+
+  // Método para obtener el tamaño de la lista
+  size() {
+    let count = 0;
+    let current = this.head;
+    while (current) {
+      count++;
+      current = current.next;
+    }
+    return count;
   }
 
   // Method to print the linked list

@@ -28,10 +28,12 @@ function processData(input) {
           }
           currentNode = currentNode.left;
         } else if (data > currentNode.data) {
+          //Si no hay nada ahí lo pone
           if (currentNode.right === null) {
             currentNode.right = newNode;
             break;
           }
+          //si sí hay algo entonces vuelve a correr el ciclo pero actualizando currentNode
           currentNode = currentNode.right;
         } else {
           break; // No insertar duplicados
@@ -39,18 +41,19 @@ function processData(input) {
       }
     }
 
+    //DFS preorder
     preOrderTraversal() {
       const result = [];
-      if (this.root === null) return result;
 
-      const stack = [this.root];
-      while (stack.length > 0) {
-        const node = stack.pop();
-        result.push(node.data);
-        if (node.right !== null) stack.push(node.right);
-        if (node.left !== null) stack.push(node.left);
+      function traverse(node) {
+        //este if para asegurar que termina la recursividad
+        if (node === null) return;
+        result.push(node.data); // Visitar el nodo raíz
+        traverse(node.left); // Recorrer el subárbol izquierdo
+        traverse(node.right); // Recorrer el subárbol derecho
       }
 
+      traverse(this.root);
       return result;
     }
   }

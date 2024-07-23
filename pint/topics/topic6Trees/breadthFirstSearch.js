@@ -11,12 +11,14 @@ function bfs(root) {
     return;
   }
 
+  let result = [];
   let queue = [];
   queue.push(root);
 
   while (queue.length > 0) {
     let currentNode = queue.shift();
     console.log(currentNode.data);
+    result.push(currentNode.data);
 
     if (currentNode.left !== null) {
       queue.push(currentNode.left);
@@ -25,6 +27,7 @@ function bfs(root) {
       queue.push(currentNode.right);
     }
   }
+  return result;
 }
 
 // Ejemplo de uso
