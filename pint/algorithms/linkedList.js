@@ -28,8 +28,10 @@ class LinkedList {
   prepend(data) {
     const newNode = new Node(data);
 
+    //el que le sigue de ese node será el anterior head
     newNode.next = this.head;
 
+    //Ahora head es newNode
     this.head = newNode;
   }
 
@@ -37,6 +39,7 @@ class LinkedList {
   insertAtPosition(data, position) {
     const newNode = new Node(data);
 
+    //si la posición es 0, se pone al principio
     if (position === 0) {
       newNode.next = this.head;
       this.head = newNode;

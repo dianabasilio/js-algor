@@ -18,10 +18,13 @@ function isColorfulNumber(number) {
       if (productMap.has(product)) {
         return false;
       }
+      // si no se cumple lo anterior simplemente se guarda en el set
       productMap.set(product, true);
       console.log("productMap", productMap);
     }
   }
+
+  //si acaba todo este for es que efectivamente 
   return true;
 }
 
